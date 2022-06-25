@@ -1,0 +1,15 @@
+.home-bg{
+    width: 100%;
+    height: 400px;
+    background-color: #FCF4E0;
+    background-image: url('../../images/bannerbackground.png');
+}
+.home-input{
+    border: 1px solid green;
+    padding: 6px 6px;
+    border-radius: 20px;
+}
+.home-btn{
+    font-size: 13px;
+    width: 100px;
+}
