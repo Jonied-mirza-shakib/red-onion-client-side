@@ -1,33 +1,164 @@
 import React, { useEffect, useState } from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import auth from '../../firebase.init';
+import { addToDb, getStoredCart } from '../../utilities/fakedb';
+import SingleDinner from '../SingleDinner/SingleDinner';
 
 const Dinner = () => {
-    const [dinner,setDinner]=useState([]);
-    useEffect(()=>{
-        fetch('http://localhost:5000/dinner')
-        .then(res=>res.json())
-        .then(data=>setDinner(data))
-    },[])
-    return (
-        <div>
-            <div style={{width:'90%',margin:'auto',}}>
-            <h1 className='text-5xl text-center uppercase mt-10' style={{fontFamily: 'Roboto Mono, monospaced',fontWeight:'bold',color:'darkcyan'}}>Dinner</h1>
-           <div className="divider w-1/4 m-auto mb-10"></div>
-           <div className='grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'>
-            {
-                dinner?.map(allDinner=> <div style={{backgroundColor:'gray',padding:'20px',color:'white'}}>
-                    <div style={{display:'flex',flexDirection:'column',alignItems:'center'}}>
-                    <img className='w-2/4' src={allDinner.img} alt="" />
-                    </div>  
-                    <h2 style={{fontSize:'20px',fontWeight:'bold',marginBottom:'5px'}}>Name: {allDinner.name}</h2>
-                  <p> <span style={{fontWeight:'bold'}}>Description:</span> {allDinner.description}</p>
-                  <p> <span style={{fontWeight:'bold'}}>Price:</span> {allDinner.price}</p>
-                  <button type="button" className='btn btn-secondary w-full'>Purchase</button>
-                </div> )
-            }
-            </div>
-            </div>
+  const [dinner, setDinner] = useState([]);
+  const [cart, setCart] = useState([]);
+  const [user, loading] = useAuthState(auth);
+  useEffect(() => {
+    fetch('http://localhost:5000/dinner')
+      .then(res => res.json())
+      .then(data => setDinner(data))
+  }, [])
+
+  useEffect(() => {
+    const storedCart = getStoredCart();
+    const savedCart = [];
+    for (const id in storedCart) {
+      const addedProduct = dinner.find(IsDinner => IsDinner._id === id);
+      if (addedProduct) {
+        const quantity = storedCart[id];
+        addedProduct.quantity = quantity;
+        savedCart.push(addedProduct);
+      }
+    }
+    setCart(savedCart);
+  }, [dinner])
+
+  const handleIncreaseBtn = (selectedProduct) => {
+    let newCart = [];
+    const exists = cart.find(product => product._id === selectedProduct._id);
+    if (!exists) {
+      selectedProduct.quantity = 1;
+      newCart = [...cart, selectedProduct];
+    }
+    else {
+      const rest = cart.filter(product => product._id !== selectedProduct._id);
+      exists.quantity = exists.quantity + 1;
+      newCart = [...rest, exists];
+    }
+
+    setCart(newCart);
+    addToDb(selectedProduct._id);
+  }
+
+  let total = 0;
+  let quantity = 0;
+
+  for (const products of cart) {
+    quantity = quantity + products.quantity;
+    total = total + products.price * products.quantity;
+  }
+  const text = parseFloat((total * 5 / 100).toFixed(2));
+  const grandTotal = total + text;
+
+  const handleSubmit = event => {
+    event.preventDefault();
+    const name = user?.displayName;
+    const email = user?.email;
+    const number = event.target?.PhoneNumber?.value;
+    const address = event.target?.address?.value;
+    const grandTotal = event.target?.order?.value;
+    let orderData = { name, email, number, address,grandTotal }
+    console.log(orderData)
+
+    fetch('http://localhost:5000/order', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(orderData),
+    })
+      .then(response => response.json())
+      .then(data => {
+        console.log('Success:', data);
+        alert(`The order has been successfully added, you can confirm the payment by pressing the close button and pressing the pay button.
+        অর্ডারটি সফলভাবে যুক্ত করা হয়েছে, আপনি ক্লোজ বোতামটি টিপে এবং পে বোতামটি টিপে অর্থ প্রদান নিশ্চিত করতে পারেন |`)
+      })
+    event.target.reset();
+  }
+
+
+  return (
+    <div style={{ width: '90%', margin: 'auto', marginTop: '80px' }}>
+      <h1 className='text-5xl text-center uppercase' style={{ fontFamily: 'Roboto Mono, monospaced', fontWeight: 'bold', color: 'darkcyan' }}>DINNER</h1>
+      <div className="divider w-1/4 m-auto mb-10"></div>
+      <div style={{ display: 'flex', flexDirection: 'row', gap: '2%' }}>
+        <div style={{ width: '75%' }} className='grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4'>
+          {
+            dinner.map(allDinner => <SingleDinner
+              key={allDinner._id}
+              allDinner={allDinner}
+              handleIncreaseBtn={handleIncreaseBtn}
+            ></SingleDinner>)
+          }
         </div>
-    );
+        <div style={{ width: '23%' }}>
+
+          <div class="card w-full bg-base-100 shadow-xl">
+            <div class="card-body">
+              <h1 className='font-bold'>ORDER SUMMARY</h1>
+              <h4 className='font-bold'>Order quantity: {quantity}</h4>
+              <h4 className='font-bold'>Total: {total}</h4>
+              <h4 className='font-bold'>Text: {text}</h4>
+              <h4 className='font-bold'>GrandTotal: {grandTotal}</h4>
+
+              {/* use modal */}
+              <input type="checkbox" id="my-modal" class="modal-toggle" />
+              <div class="modal">
+                <div class="modal-box">
+                <form onSubmit={handleSubmit}>
+                    <div class="form-control w-full max-w-xs">
+                      <label class="label">
+                        <span class="label-text">Name</span>
+                      </label>
+                      <input type="text" name="name" value={user?.displayName} className="input input-bordered w-full max-w-xs mb-5" disabled />
+                    </div>
+                    <div class="form-control w-full max-w-xs">
+                      <label class="label">
+                        <span class="label-text">Email</span>
+                      </label>
+                      <input type="email" name="email" value={user?.email} className="input input-bordered w-full max-w-xs mb-5" disabled />
+                    </div>
+                    <div class="form-control w-full max-w-xs">
+                      <label class="label">
+                        <span class="label-text">Phone Number</span>
+                      </label>
+                      <input type="text" name="PhoneNumber" placeholder='Enter your Phone Number' required className="input input-bordered w-full max-w-xs mb-5" />
+                    </div>
+                    <div class="form-control w-full max-w-xs">
+                      <label class="label">
+                        <span class="label-text">Address</span>
+                      </label>
+                      <input type="text" name="address" placeholder='Enter your current address' required className="input input-bordered w-full max-w-xs mb-5" />
+                    </div>
+                    <div class="form-control w-full max-w-xs">
+                      <label class="label">
+                        <span class="label-text">GrandTotal</span>
+                      </label>
+                      <input type="text" name="order" placeholder='Enter your Grand Total' required value={grandTotal} className="input input-bordered w-full max-w-xs mb-5" />
+                    </div>
+                    <input
+                      type="submit" value="Order Now" className='btn btn-accent w-3/4 text-white' />
+                  </form>
+                  <div class="modal-action">
+                    <label for="my-modal" class="btn">CLOSE</label>
+                  </div>
+                </div>
+              </div>
+
+
+              <label for="my-modal" class="btn modal-button">ORDER NOW</label>
+              <button type="button" className='btn btn-error text-white'>PAY</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default Dinner;
