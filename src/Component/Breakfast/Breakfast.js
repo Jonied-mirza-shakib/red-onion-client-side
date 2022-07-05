@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import SingleBreakfast from '../SingleBreakfast/SingleBreakfast';
 import { getStoredCart, addToDb, deleteShoppingCart, removeFromDb } from '../../utilities/fakedb'
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './Breakfast.css'
 import auth from '../../firebase.init';
 import { useAuthState } from 'react-firebase-hooks/auth';
@@ -17,21 +17,6 @@ const Breakfast = () => {
       .then(data => setBreakfast(data))
   }, [])
 
-
-  useEffect(() => {
-    const storedCart = getStoredCart();
-    const savedCart = [];
-    for (const id in storedCart) {
-      const addedProduct = breakfast.find(IsBreakfast => IsBreakfast._id === id);
-      if (addedProduct) {
-        const quantity = storedCart[id];
-        addedProduct.quantity = quantity;
-        savedCart.push(addedProduct);
-      }
-    }
-    setCart(savedCart);
-  }, [breakfast])
-
   const handleIncreaseBtn = (selectedProduct) => {
     let newCart = [];
     const exists = cart.find(product => product._id === selectedProduct._id);
@@ -46,7 +31,6 @@ const Breakfast = () => {
     }
 
     setCart(newCart);
-    addToDb(selectedProduct._id);
   }
 
   let total = 0;
@@ -105,9 +89,9 @@ const Breakfast = () => {
             <div class="card-body">
               <h1 className='font-bold'>ORDER SUMMARY</h1>
               <h4 className='font-bold'>Order quantity: {quantity}</h4>
-              <h4 className='font-bold'>Total: {total}</h4>
-              <h4 className='font-bold'>Text: {text}</h4>
-              <h4 className='font-bold'>GrandTotal: {grandTotal}</h4>
+              <h4 className='font-bold'>Total: ${total}</h4>
+              <h4 className='font-bold'>Text: ${text}</h4>
+              <h4 className='font-bold'>GrandTotal: ${grandTotal}</h4>
 
 {/* use modal */}
               <input type="checkbox" id="my-modal" class="modal-toggle" />
@@ -155,7 +139,7 @@ const Breakfast = () => {
 
 
               <label for="my-modal" class="btn modal-button">ORDER NOW</label>
-              <button type="button" className='btn btn-error text-white'>PAY</button>
+              <Link to='/pay' className='btn btn-error text-white w-full'>PAY</Link>
             </div>
           </div>
         </div>

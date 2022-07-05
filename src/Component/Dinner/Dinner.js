@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { Link } from 'react-router-dom';
 import auth from '../../firebase.init';
 import { addToDb, getStoredCart } from '../../utilities/fakedb';
 import SingleDinner from '../SingleDinner/SingleDinner';
@@ -13,20 +14,6 @@ const Dinner = () => {
       .then(res => res.json())
       .then(data => setDinner(data))
   }, [])
-
-  useEffect(() => {
-    const storedCart = getStoredCart();
-    const savedCart = [];
-    for (const id in storedCart) {
-      const addedProduct = dinner.find(IsDinner => IsDinner._id === id);
-      if (addedProduct) {
-        const quantity = storedCart[id];
-        addedProduct.quantity = quantity;
-        savedCart.push(addedProduct);
-      }
-    }
-    setCart(savedCart);
-  }, [dinner])
 
   const handleIncreaseBtn = (selectedProduct) => {
     let newCart = [];
@@ -42,7 +29,6 @@ const Dinner = () => {
     }
 
     setCart(newCart);
-    addToDb(selectedProduct._id);
   }
 
   let total = 0;
@@ -102,9 +88,9 @@ const Dinner = () => {
             <div class="card-body">
               <h1 className='font-bold'>ORDER SUMMARY</h1>
               <h4 className='font-bold'>Order quantity: {quantity}</h4>
-              <h4 className='font-bold'>Total: {total}</h4>
-              <h4 className='font-bold'>Text: {text}</h4>
-              <h4 className='font-bold'>GrandTotal: {grandTotal}</h4>
+              <h4 className='font-bold'>Total: ${total}</h4>
+              <h4 className='font-bold'>Text: ${text}</h4>
+              <h4 className='font-bold'>GrandTotal: ${grandTotal}</h4>
 
               {/* use modal */}
               <input type="checkbox" id="my-modal" class="modal-toggle" />
@@ -152,7 +138,7 @@ const Dinner = () => {
 
 
               <label for="my-modal" class="btn modal-button">ORDER NOW</label>
-              <button type="button" className='btn btn-error text-white'>PAY</button>
+              <Link to='/pay' className='btn btn-error text-white w-full'>PAY</Link>
             </div>
           </div>
         </div>

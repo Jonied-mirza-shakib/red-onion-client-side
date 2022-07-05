@@ -10,7 +10,7 @@ const SingleDinner = ({allDinner,handleIncreaseBtn}) => {
           <div class="card-body">
             <h2 class=""><span className='font-bold'>NAME:</span> {allDinner.name}</h2>
             <p><span className='font-bold'>DESCRIPTION:</span> {allDinner.description}</p>
-            <p><span className='font-bold'>PRICE:</span> {allDinner.price}</p>
+            <p><span className='font-bold'>PRICE:</span> ${allDinner.price}</p>
             <div class="card-actions" style={{display:'flex',flexDirection:'row',justifyContent:'center'}}>
               <button onClick={()=>handleIncreaseBtn(allDinner)} class="btn btn-primary">Buy Now</button>
             </div>

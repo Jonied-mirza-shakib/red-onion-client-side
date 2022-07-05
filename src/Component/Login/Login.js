@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { Link, Navigate, useNavigate } from 'react-router-dom';
+import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
 import { FcGoogle } from 'react-icons/fc';
 import auth from '../../firebase.init';
 import { useSendPasswordResetEmail, useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
@@ -21,12 +21,14 @@ const Login = () => {
 
     const { register, formState: { errors }, handleSubmit } = useForm();
     const navigate = useNavigate();
+    let location=useLocation();
+    let from = location.state?.from?.pathname || "/";
     if (googleLoading || loading || sending) {
         return <Loading></Loading>
     }
 
     if (googleUser || user) {
-        navigate('/')
+        navigate(from, { replace: true });
     }
     let errorMessage;
     if (googleError || error || sendPasswordResetEmailError) {

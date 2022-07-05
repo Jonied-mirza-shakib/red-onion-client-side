@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { Link } from 'react-router-dom';
 import auth from '../../firebase.init';
 import { addToDb, getStoredCart } from '../../utilities/fakedb';
 import SingleLunch from '../SingleLunch/SingleLunch';
@@ -13,20 +14,6 @@ const Lunce = () => {
       .then(res => res.json())
       .then(data => setLunch(data))
   }, [])
-
-  useEffect(() => {
-    const storedCart = getStoredCart();
-    const savedCart = [];
-    for (const id in storedCart) {
-      const addedProduct = lunch.find(IsBreakfast => IsBreakfast._id === id);
-      if (addedProduct) {
-        const quantity = storedCart[id];
-        addedProduct.quantity = quantity;
-        savedCart.push(addedProduct);
-      }
-    }
-    setCart(savedCart);
-  }, [lunch])
 
   const handleIncreaseBtn = (selectedProduct) => {
     let newCart = [];
@@ -105,9 +92,9 @@ const Lunce = () => {
             <div class="card-body">
               <h1 className='font-bold'>ORDER SUMMARY</h1>
               <h4 className='font-bold'>Order quantity: {quantity}</h4>
-              <h4 className='font-bold'>Total: {total}</h4>
-              <h4 className='font-bold'>Text: {text}</h4>
-              <h4 className='font-bold'>GrandTotal: {grandTotal}</h4>
+              <h4 className='font-bold'>Total: ${total}</h4>
+              <h4 className='font-bold'>Text: ${text}</h4>
+              <h4 className='font-bold'>GrandTotal: ${grandTotal}</h4>
 
               {/* use modal */}
               <input type="checkbox" id="my-modal" class="modal-toggle" />
@@ -155,7 +142,7 @@ const Lunce = () => {
 
 
               <label for="my-modal" class="btn modal-button">ORDER NOW</label>
-              <button type="button" className='btn btn-error text-white'>PAY</button>
+              <Link to='/pay' className='btn btn-error text-white w-full'>PAY</Link>
             </div>
           </div>
         </div>
