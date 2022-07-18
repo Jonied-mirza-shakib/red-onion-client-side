@@ -1,0 +1,15 @@
+label{
+    font-size: 20px;
+    color: darkblue;
+    text-transform: uppercase;
+}
+input{
+    border: 2px solid darkblue;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+textarea{
+    border: 2px solid darkblue;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}

@@ -16,6 +16,10 @@ const Navbar = () => {
     <li style={{padding:'10px',fontSize:'18px',textTransform:'uppercase',color:'darkcyan',fontWeight:'bold'}}><Link to='/breakfast'>Breakfast</Link></li>
     <li style={{padding:'10px',fontSize:'18px',textTransform:'uppercase',color:'darkcyan',fontWeight:'bold'}}><Link to='/dinner'>Dinner</Link></li>
     <li style={{padding:'10px',fontSize:'18px',textTransform:'uppercase',color:'darkcyan',fontWeight:'bold'}}><Link to='/lunce'>Lunce</Link></li>
+    <li style={{padding:'10px',fontSize:'18px',textTransform:'uppercase',color:'darkcyan',fontWeight:'bold'}}><Link to='/myOrder'>My Order</Link></li>
+    {
+            user && <li style={{padding:'10px',fontSize:'18px',textTransform:'uppercase',color:'darkcyan',fontWeight:'bold'}}><Link to='/dashboard'>Dashboard</Link></li>
+        }
     <li style={{padding:'10px',fontSize:'18px',textTransform:'uppercase',color:'darkcyan',fontWeight:'bold'}}>{
         user?<button onClick={logout} type="button" className='btn text-white'>Log Out</button>:<Link to='/login'>Login</Link>
     }</li>

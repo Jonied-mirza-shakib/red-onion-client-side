@@ -35,7 +35,7 @@ const Login = () => {
         errorMessage = <p className='fs-4 text-red-600 font-bold'>{googleError?.message}</p>
     }
 
-    const onSubmit = (data) => {
+    const onSubmit = async (data) => {
         console.log(data)
         signInWithEmailAndPassword(data?.email, data?.password)
         setEmail(data?.email)
@@ -69,7 +69,7 @@ const Login = () => {
                             <div style={{ marginBottom: '10px' }}>
                                 <label for="password">PASSWORD</label>
                                 <br />
-                                <input type="password" className='w-full' {...register("password", { required: "password is required" })} />
+                                <input type="password" placeholder="Your Password" className='w-full' {...register("password", { required: "password is required" })} />
                                 <p>{errors.password?.message}</p>
                             </div>
                             <input style={{ fontSize: '20px' }} className='w-full text-center cursor-pointer font-bold bg-accent text-white' type="submit" />

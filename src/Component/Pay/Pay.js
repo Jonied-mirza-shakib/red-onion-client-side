@@ -1,14 +1,36 @@
 import React, { useEffect, useState } from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { AiFillDelete } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
+import auth from '../../firebase.init';
 
 const Pay = () => {
     const [pay, setPay] = useState([]);
+    const [user, loading] = useAuthState(auth);
     useEffect(() => {
-        fetch('http://localhost:5000/order')
+        fetch(`http://localhost:5000/order?email=${user?.email}`)
             .then(res => res.json())
             .then(data => setPay(data))
     }, [])
+
+    const handleDelete = id => {
+        console.log(id)
+        fetch(`http://localhost:5000/order/${id}`, {
+            method: "DELETE",
+            headers: {
+                'Content-type': 'application/json'
+            }
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                if(data.deletedCount>0){
+                    const remaining= pay.filter(payments=> payments._id!==id);
+                    setPay(remaining)
+                }
+            })
+    }
+
     return (
         <div style={{ width: '90%', margin: 'auto', marginTop: '80px' }}>
             <h1 className='text-5xl text-center uppercase' style={{ fontFamily: 'Roboto Mono, monospaced', fontWeight: 'bold', color: 'darkcyan' }}>PLEASE PAY CONFIRM</h1>
@@ -29,21 +51,26 @@ const Pay = () => {
                     </thead>
                     <tbody>
                         {
-                            pay.map((isPay,index) =>
-                                <tr>
-                                    <th>{index+1}</th>
+                            pay.map((isPay, index) =>
+                                <tr key={isPay._id}>
+                                    <th>{index + 1}</th>
                                     <td>{isPay.name}</td>
                                     <td>{isPay.email}</td>
                                     <td>{isPay.address}</td>
                                     <td>{isPay.number}</td>
                                     <td>${isPay.grandTotal}</td>
                                     <td>
-                                        {(isPay.grandTotal&&!isPay.paid)&& <Link to={`/payment/${isPay._id}`}><button type="button" className='btn btn-xs btn-accent text-white'>PAY</button></Link>
-                                         }
-                                        {(isPay.grandTotal&&isPay.paid)&& <span className="text-success">PAID</span>
-                                         }
+                                        {(isPay.grandTotal && !isPay.paid) && <Link to={`/payment/${isPay._id}`}><button type="button" className='btn btn-xs btn-accent text-white'>PAY</button></Link>
+                                        }
+                                        {(isPay.grandTotal && isPay.paid) && <div>
+                                            <span className='text-success'>paid</span>
+                                            <br/>
+                                            <span className='text-success'>Transaction Id:{isPay?.transactionId}</span>
+                                        </div> }
                                     </td>
-                                    <td className='btn btn-error font-bold'><AiFillDelete/></td>
+                                    <td>
+                                        <button onClick={() => handleDelete(isPay._id)} type="button" className='btn btn-error font-bold'><AiFillDelete /></button>
+                                    </td>
                                 </tr>
                             )
                         }

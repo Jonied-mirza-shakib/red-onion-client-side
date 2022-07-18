@@ -142,7 +142,7 @@ const Lunce = () => {
 
 
               <label for="my-modal" class="btn modal-button">ORDER NOW</label>
-              <Link to='/pay' className='btn btn-error text-white w-full'>PAY</Link>
+              <Link to='/myOrder' className='btn btn-error text-white w-full'>PAY</Link>
             </div>
           </div>
         </div>

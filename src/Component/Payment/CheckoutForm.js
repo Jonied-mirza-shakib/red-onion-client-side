@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 
-const CheckoutForm = ({ pay }) => {
-    const { _id,grandTotal, name } = pay;
-
+const CheckoutForm = ({pay}) => {
     const stripe = useStripe();
     const elements = useElements();
     const [cardError, setCardError] = useState('')
@@ -11,43 +9,45 @@ const CheckoutForm = ({ pay }) => {
     const [success, setSuccess] = useState("");
     const [proccesing, setProccesing] = useState(false);
     const [transactionId, setTransactionId] = useState("");
-
-
+    const { _id, grandTotal, name } = pay;
     useEffect(() => {
         fetch('http://localhost:5000/create-payment-intent', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ grandTotal }),
+            body: JSON.stringify({grandTotal}),
         })
             .then(res => res.json())
             .then(data => {
                 if (data?.clientSecret) {
                     setClientSecret(data.clientSecret)
-
                 }
             })
     }, [grandTotal])
 
     const handleSubmit = async (event) => {
         event.preventDefault();
+
         if (!stripe || !elements) {
             return;
         }
+
         const card = elements.getElement(CardElement);
 
         if (card === null) {
             return;
         }
+
         const { error, paymentMethod } = await stripe.createPaymentMethod({
             type: 'card',
-            card,
+            card
         });
         setCardError(error?.message || '')
         setSuccess('')
         setProccesing(true)
-        const { paymentIntent, error: intentError } = await stripe.confirmCardPayment(
+          // confirm card payment
+          const { paymentIntent, error: intentError } = await stripe.confirmCardPayment(
             clientSecret,
             {
                 payment_method: {
@@ -58,6 +58,7 @@ const CheckoutForm = ({ pay }) => {
                 },
             },
         );
+
         if (intentError) {
             setCardError(intentError?.message)
             setProccesing(false)
@@ -67,9 +68,9 @@ const CheckoutForm = ({ pay }) => {
             setTransactionId(paymentIntent.id)
             console.log(paymentIntent)
 
-            const payments={
+            const payments = {
                 totalPrice: _id,
-                transaction: paymentIntent.id
+                transactionId: paymentIntent.id
             }
 
             // updated data
@@ -78,14 +79,14 @@ const CheckoutForm = ({ pay }) => {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(),
+                body: JSON.stringify(payments),
             })
-                .then(response => response.json(payments))
+                .then(res => res.json())
                 .then(data => {
                     setProccesing(false)
                     console.log('Success:', data);
                 })
-          
+
         }
     }
     return (
