@@ -1,9 +1,10 @@
 import React from 'react';
 import { useForm } from "react-hook-form";
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 const UpdateDinner = () => {
     const {id}=useParams()
+    const navigate=useNavigate();
  const { register, formState: { errors },reset, handleSubmit } = useForm();
   const onSubmit = async data => {
     console.log(data)
@@ -28,6 +29,9 @@ const UpdateDinner = () => {
     reset()
   }
 })
+  }
+  const backToManageDinner=()=>{
+    navigate('/dashboard/manageDinner')
   }
     return (
         <div>
@@ -64,6 +68,9 @@ const UpdateDinner = () => {
 </form>
 </div>
 </div>
+    </div>
+        <div  className='mx-auto text-center'>
+        <button onClick={backToManageDinner} type="button" className='btn btn-primary btn-lg mt-20'>Back to manage Dinner</button>
         </div>
     </div>
     );

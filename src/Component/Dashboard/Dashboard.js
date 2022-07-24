@@ -14,6 +14,8 @@ const Dashboard = () => {
           <ul class="menu p-4 overflow-y-auto w-30 bg-base-100 text-base-content">
             {/* <!-- Sidebar content here --> */}
             <li className='text-accent font-bold'><Link to='/dashboard'>My Profile</Link></li>
+            <li className='text-accent font-bold'><Link to='/dashboard/addProfileInformation'>Add Profile Information</Link></li>
+            <li className='text-accent font-bold'><Link to='/dashboard/allUsers'>All User</Link></li>
             <li className='text-accent font-bold'><Link to='/dashboard/addBreakfast'>Add Breakfast</Link></li>
             <li className='text-accent font-bold'><Link to='/dashboard/addDinner'>Add Dinner</Link></li>
             <li className='text-accent font-bold'><Link to='/dashboard/addLunch'>Add Lunch</Link></li>

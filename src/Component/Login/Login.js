@@ -5,6 +5,7 @@ import { FcGoogle } from 'react-icons/fc';
 import auth from '../../firebase.init';
 import { useSendPasswordResetEmail, useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import Loading from '../Loading/Loading';
+import useToken from '../../Hooks/useToken';
 
 const Login = () => {
     const [signInWithGoogle, googleUser, googleLoading, googleError] = useSignInWithGoogle(auth);
@@ -19,6 +20,8 @@ const Login = () => {
         auth
     );
 
+    const [token]=useToken(googleUser || user)
+
     const { register, formState: { errors }, handleSubmit } = useForm();
     const navigate = useNavigate();
     let location=useLocation();
@@ -27,7 +30,7 @@ const Login = () => {
         return <Loading></Loading>
     }
 
-    if (googleUser || user) {
+    if (token) {
         navigate(from, { replace: true });
     }
     let errorMessage;
@@ -75,7 +78,7 @@ const Login = () => {
                             <input style={{ fontSize: '20px' }} className='w-full text-center cursor-pointer font-bold bg-accent text-white' type="submit" />
                         </form>
                         <button onClick={() => signInWithGoogle()} type="button" className='btn' style={{ fontSize: '20px', marginBottom: '10px' }}>
-                            <FcGoogle></FcGoogle> <span className='ml-3'>LOGIN</span>
+                        <span className='mr-3'>Continue with</span><FcGoogle></FcGoogle>
                         </button>
                         {errorMessage}
                         <Link to='/signUp'><a href="#" className='underline text-zinc-900 font-bold'>Are You New User? Please Sign Up.</a></Link>

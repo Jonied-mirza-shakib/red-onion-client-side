@@ -10,7 +10,16 @@ const ManagDinner = () => {
         .then(data => setDinner(data))
     }, [])
     const handleDelete=id=>{
-
+      fetch(`http://localhost:5000/dinner/${id}`,{
+        method:'DELETE'
+    })
+    .then(res=>res.json())
+    .then(result=>{
+        if(result.deletedCount>0){
+            const remaining=dinner.filter(allDinner=>allDinner._id!==id)
+            setDinner(remaining)
+        }
+    })
     }
     return (
         <div>

@@ -1,43 +1,41 @@
 import React from 'react';
+import { useForm } from 'react-hook-form';
 import { useNavigate, useParams } from 'react-router-dom';
-import { useForm } from "react-hook-form";
 
-const UpdateBreakfast = () => {
+const UpdatedLunch = () => {
     const {id}=useParams()
-    const navigate=useNavigate()
+    const navigate=useNavigate();
     const { register, formState: { errors },reset, handleSubmit } = useForm();
-    const onSubmit = async data => {
-      console.log(data)
-      const updatedBreakfast={
-          name: data.name,
-          price: data.price,
-          description: data.description,
-          img: data.img
-      }
-      fetch(`http://localhost:5000/breakfast/${id}`, {
-    method: 'PUT',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(updatedBreakfast),
-  })
-  .then(res => res.json())
-  .then(result => {
-    console.log('Success:', result);
-    if(result.modifiedCount>0){
-      alert('Dinner updated successfully')
-      reset()
-    }
-  })
-    }
-
-    const backToManageBreakfast=()=>{
-      navigate('/dashboard/manageBreakfast')
-    }
- 
+     const onSubmit = async data => {
+       console.log(data)
+       const updatedDinner={
+           name: data.name,
+           price: data.price,
+           description: data.description,
+           img: data.img
+       }
+       fetch(`http://localhost:5000/lunch/${id}`, {
+     method: 'PUT',
+     headers: {
+       'Content-Type': 'application/json',
+     },
+     body: JSON.stringify(updatedDinner),
+   })
+   .then(res => res.json())
+   .then(result => {
+     console.log('Success:', result);
+     if(result.modifiedCount>0){
+       alert('lunch updated successfully')
+       reset()
+     }
+   })
+     }
+     const backToManageLunch=()=>{
+      navigate('/dashboard/manageLunch')
+     }
     return (
-      <div>
-        <h1 className='text-3xl text-center text-blue-700 uppercase font-bold mt-5'>Breakfast Updated</h1>
+        <div>
+        <h1 className='text-3xl text-center text-blue-700 uppercase font-bold mt-5'>Lunch Updated</h1>
         <div style={{display:'flex',flexDirection:'row',justifyContent:'center'}}>
         <div class="card w-2/4 bg-base-100 shadow-xl">
 <div class="card-body">
@@ -70,12 +68,12 @@ const UpdateBreakfast = () => {
 </form>
 </div>
 </div>
-  </div>
-  <div  className='mx-auto text-center'>
-        <button onClick={backToManageBreakfast} type="button" className='btn btn-primary btn-lg mt-20'>Back to manage Breakfast</button>
+        </div>
+        <div  className='mx-auto text-center'>
+        <button onClick={backToManageLunch} type="button" className='btn btn-primary btn-lg mt-20'>Back to manage Lunch</button>
         </div>
     </div>
     );
 };
 
-export default UpdateBreakfast;
+export default UpdatedLunch;
