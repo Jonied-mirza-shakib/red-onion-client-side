@@ -21,6 +21,8 @@ import AddLunch from './Component/Dashboard/AddLunch';
 import ManagDinner from './Component/Dashboard/ManagDinner';
 import ManageLunch from './Component/Dashboard/ManageLunch';
 import Footer from './Component/Footer/Footer';
+import UpdateBreakfast from './Component/UpdateBreakfast/UpdateBreakfast';
+import UpdateDinner from './Component/UpdateDinner/UpdateDinner';
 
 function App() {
   return (
@@ -47,6 +49,8 @@ function App() {
         <Route path='manageDinner' element={<ManagDinner></ManagDinner>}></Route>
         <Route path='manageLunch' element={<ManageLunch></ManageLunch>}></Route>
         </Route>
+        <Route path='/updateBreakfast/:id' element={<UpdateBreakfast></UpdateBreakfast>}></Route>
+        <Route path='/updateDinner/:id' element={<UpdateDinner></UpdateDinner>}></Route>
         <Route path='/login' element={<Login></Login>}></Route>
         <Route path='/signUp' element={<SignUp></SignUp>}></Route>
       </Routes>

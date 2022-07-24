@@ -1,7 +1,6 @@
 import React from 'react';
 
 const SingleBreakfast = ({ allBreakfast,handleIncreaseBtn }) => {
- 
   return (
     <div>
       <div class="card bg-base-100 shadow-xl" style={{width:'100%',height:'750px',backgroundColor:'darkcyan',color:'white'}}>
