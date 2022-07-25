@@ -5,7 +5,7 @@ const useBreakfast = () =>{
     const [breakfast, setBreakfast] = useState([]);
 
     useEffect( () =>{
-        fetch('http://localhost:5000/breakfast')
+        fetch('https://whispering-oasis-37712.herokuapp.com/breakfast')
         .then(res => res.json())
         .then(data => setBreakfast(data));
     }, []);

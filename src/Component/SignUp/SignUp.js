@@ -77,7 +77,7 @@ let errorMessage;
                                 <input type="password" className='w-full' {...register("password", { required: "password is required" })} />
                                 <p>{errors.password?.message}</p>
                             </div>
-                            <input style={{fontSize:'20px'}} className='w-full text-center cursor-pointer font-bold bg-accent text-white' type="submit" />
+                            <input style={{fontSize:'20px'}} className='w-full text-center cursor-pointer font-bold bg-accent text-white' type="submit" value='SIGN UP'/>
                         </form>
                         <button onClick={()=>signInWithGoogle()} type="button" className='btn' style={{fontSize:'20px',marginBottom:'10px'}}>
                         <span className='mr-3'>Continue with</span><FcGoogle></FcGoogle>

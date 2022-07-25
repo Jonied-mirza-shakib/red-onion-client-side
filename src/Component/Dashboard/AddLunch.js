@@ -25,7 +25,7 @@ const AddLunch = () => {
         price: data.price,
         image: image
     }
-    fetch('http://localhost:5000/lunch', {
+    fetch('https://whispering-oasis-37712.herokuapp.com/lunch', {
   method: 'POST', // or 'PUT'
   headers: {
     'Content-Type': 'application/json',

@@ -12,7 +12,7 @@ const Breakfast = () => {
   const navigate=useNavigate();
   const [user, loading] = useAuthState(auth);
   useEffect(() => {
-    fetch('http://localhost:5000/breakfast')
+    fetch('https://whispering-oasis-37712.herokuapp.com/breakfast')
       .then(res => res.json())
       .then(data => setBreakfast(data))
   }, [])
@@ -53,7 +53,7 @@ const Breakfast = () => {
     let orderData = { name, email, number, address,grandTotal }
     console.log(orderData)
 
-    fetch('http://localhost:5000/order', {
+    fetch('https://whispering-oasis-37712.herokuapp.com/order', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

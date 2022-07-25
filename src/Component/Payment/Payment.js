@@ -10,7 +10,7 @@ const Payment = () => {
   const { id } = useParams();
   const navigate = useNavigate()
   const { data: pay, isLoading } = useQuery(['orders', id], () =>
-    fetch(`http://localhost:5000/order/${id}`, {
+    fetch(`https://whispering-oasis-37712.herokuapp.com/order/${id}`, {
       method: 'GET',
     })
       .then(res => res.json())

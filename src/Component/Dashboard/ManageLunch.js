@@ -5,13 +5,13 @@ const ManageLunch = () => {
     const [lunch,setLunch]=useState([]);
     const navigate=useNavigate()
     useEffect(()=>{
-        fetch('http://localhost:5000/lunch')
+        fetch('https://whispering-oasis-37712.herokuapp.com/lunch')
         .then(res=>res.json())
         .then(data=>setLunch(data))
     },[])
 
     const handleDelete=id=>{
-      fetch(`http://localhost:5000/lunch/${id}`,{
+      fetch(`https://whispering-oasis-37712.herokuapp.com/lunch/${id}`,{
         method:'DELETE'
     })
     .then(res=>res.json())

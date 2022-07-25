@@ -26,7 +26,7 @@ const AddBreakfast = () => {
             description: data.description,
             img: image
         }
-        fetch('http://localhost:5000/breakfast', {
+        fetch('https://whispering-oasis-37712.herokuapp.com/breakfast', {
   method: 'POST',
   headers: {
     'Content-Type': 'application/json',

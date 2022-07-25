@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FcGoogle } from 'react-icons/fc';
 import auth from '../../firebase.init';
 import { useSendPasswordResetEmail, useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
@@ -33,13 +33,14 @@ const Login = () => {
     if (token) {
         navigate(from, { replace: true });
     }
+    
     let errorMessage;
     if (googleError || error || sendPasswordResetEmailError) {
         errorMessage = <p className='fs-4 text-red-600 font-bold'>{googleError?.message}</p>
     }
 
+
     const onSubmit = async (data) => {
-        console.log(data)
         signInWithEmailAndPassword(data?.email, data?.password)
         setEmail(data?.email)
     };
@@ -75,7 +76,7 @@ const Login = () => {
                                 <input type="password" placeholder="Your Password" className='w-full' {...register("password", { required: "password is required" })} />
                                 <p>{errors.password?.message}</p>
                             </div>
-                            <input style={{ fontSize: '20px' }} className='w-full text-center cursor-pointer font-bold bg-accent text-white' type="submit" />
+                            <input style={{ fontSize: '20px' }} className='w-full text-center cursor-pointer font-bold bg-accent text-white' type="submit" value='LOGIN' />
                         </form>
                         <button onClick={() => signInWithGoogle()} type="button" className='btn' style={{ fontSize: '20px', marginBottom: '10px' }}>
                         <span className='mr-3'>Continue with</span><FcGoogle></FcGoogle>

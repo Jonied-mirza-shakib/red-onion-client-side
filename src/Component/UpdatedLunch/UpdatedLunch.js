@@ -14,7 +14,7 @@ const UpdatedLunch = () => {
            description: data.description,
            img: data.img
        }
-       fetch(`http://localhost:5000/lunch/${id}`, {
+       fetch(`https://whispering-oasis-37712.herokuapp.com/lunch/${id}`, {
      method: 'PUT',
      headers: {
        'Content-Type': 'application/json',

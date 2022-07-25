@@ -10,7 +10,7 @@ const Lunce = () => {
   const [cart, setCart] = useState([]);
   const [user, loading] = useAuthState(auth);
   useEffect(() => {
-    fetch('http://localhost:5000/lunch')
+    fetch('https://whispering-oasis-37712.herokuapp.com/lunch')
       .then(res => res.json())
       .then(data => setLunch(data))
   }, [])
@@ -51,7 +51,7 @@ const Lunce = () => {
     let orderData = { name, email, number, address,grandTotal }
     console.log(orderData)
 
-    fetch('http://localhost:5000/order', {
+    fetch('https://whispering-oasis-37712.herokuapp.com/order', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

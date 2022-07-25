@@ -25,7 +25,7 @@ const AddDinner = () => {
                 price: data.price,
                 img: img
             }
-            fetch('http://localhost:5000/dinner', {
+            fetch('https://whispering-oasis-37712.herokuapp.com/dinner', {
   method: 'POST',
   headers: {
     'Content-Type': 'application/json',

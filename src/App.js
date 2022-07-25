@@ -24,9 +24,9 @@ import Footer from './Component/Footer/Footer';
 import UpdateBreakfast from './Component/UpdateBreakfast/UpdateBreakfast';
 import UpdateDinner from './Component/UpdateDinner/UpdateDinner';
 import UpdatedLunch from './Component/UpdatedLunch/UpdatedLunch';
-import CompleteProfile from './Component/Dashboard/CompleteProfile';
-import UpdateProfile from './Component/UpdateProfile/UpdateProfile';
-import AllUsers from './Component/Dashboard/AllUsers';
+import Users from './Component/Dashboard/Users';
+import RequireAdmin from './Component/RequireAuth/RequireAdmin';
+
 
 function App() {
   return (
@@ -50,19 +50,17 @@ function App() {
           </RequireAuth>
        }>
         <Route index element={<MyProfile></MyProfile>}></Route>
-        <Route path='allUsers' element={<AllUsers></AllUsers>}></Route>
-        <Route path='addProfileInformation' element={<CompleteProfile></CompleteProfile>}></Route>
-        <Route path='addBreakfast' element={<AddBreakfast></AddBreakfast>}></Route>
-        <Route path='addDinner' element={<AddDinner></AddDinner>}></Route>
-        <Route path='addLunch' element={<AddLunch></AddLunch>}></Route>
-        <Route path='manageBreakfast' element={<ManagBreakfast></ManagBreakfast>}></Route>
-        <Route path='manageDinner' element={<ManagDinner></ManagDinner>}></Route>
-        <Route path='manageLunch' element={<ManageLunch></ManageLunch>}></Route>
+        <Route path='users' element={<RequireAdmin><Users></Users></RequireAdmin>}></Route>
+        <Route path='addBreakfast' element={<RequireAdmin><AddBreakfast></AddBreakfast></RequireAdmin>}></Route>
+        <Route path='addDinner' element={<RequireAdmin><AddDinner></AddDinner></RequireAdmin>}></Route>
+        <Route path='addLunch' element={<RequireAdmin><AddLunch></AddLunch></RequireAdmin>}></Route>
+        <Route path='manageBreakfast' element={<RequireAdmin><ManagBreakfast></ManagBreakfast></RequireAdmin>}></Route>
+        <Route path='manageDinner' element={<RequireAdmin><ManagDinner></ManagDinner></RequireAdmin>}></Route>
+        <Route path='manageLunch' element={<RequireAdmin><ManageLunch></ManageLunch></RequireAdmin>}></Route>
         </Route>
         <Route path='/updateBreakfast/:id' element={<UpdateBreakfast></UpdateBreakfast>}></Route>
         <Route path='/updateDinner/:id' element={<UpdateDinner></UpdateDinner>}></Route>
         <Route path='/updateLunch/:id' element={<UpdatedLunch></UpdatedLunch>}></Route>
-        <Route path='/updateProfile/:id' element={<UpdateProfile></UpdateProfile>}></Route>
         <Route path='/login' element={<Login></Login>}></Route>
         <Route path='/signUp' element={<SignUp></SignUp>}></Route>
       </Routes>
