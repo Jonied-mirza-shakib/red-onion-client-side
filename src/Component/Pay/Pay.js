@@ -48,7 +48,7 @@ const Pay = () => {
     }
 
     return (
-        <div style={{ width: '90%', margin: 'auto', marginTop: '80px' }}>
+        <div style={{ width: '90%', margin: 'auto', marginTop: '80px',marginBottom:'100px' }}>
             <h1 className='text-5xl text-center uppercase' style={{ fontFamily: 'Roboto Mono, monospaced', fontWeight: 'bold', color: 'darkcyan' }}>PLEASE PAY CONFIRM</h1>
             <div className="divider w-2/4 m-auto mb-10"></div>
             <div class="overflow-x-auto">
