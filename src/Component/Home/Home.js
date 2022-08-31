@@ -1,6 +1,5 @@
 import React from 'react';
 import GoogleFontLoader from 'react-google-font-loader';
-import ChooseUs from '../ChooseUs/ChooseUs';
 import FeaturedFood from '../FeaturedFood/FeaturedFood';
 import HowItsWorks from '../HowItsWorks/HowItsWorks';
 import './Home.css'
@@ -39,7 +38,6 @@ const Home = () => {
       </div>
       <HowItsWorks></HowItsWorks>
       <FeaturedFood></FeaturedFood>
-      <ChooseUs></ChooseUs>
     </div>
   );
 };
