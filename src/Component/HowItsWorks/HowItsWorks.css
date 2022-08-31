@@ -1,0 +1,98 @@
+.how-its-work{
+    width: 90%;
+    margin: auto;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+.how-its-work .how-its-work-title{
+    padding-bottom: 20px;
+}
+.how-its-work .how-its-work-title h1{
+    font-size: 35px;
+    text-align: center;
+    font-weight: bold;
+}
+.how-its-work .how-its-work-title p{
+    font-size: 16px;
+    text-align: center;
+}
+.how-its-work .step-1{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.how-its-work .step-1 .img{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.how-its-work .step-1 img{
+    background-color: #FF5F06;
+    width: 50%;
+    border-radius: 100%;
+}
+/* end step 1 */
+.how-its-work .step-2{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.how-its-work .step-2 .img{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.how-its-work .step-2 img{
+    background-color: #FF5F06;
+    width: 50%;
+    border-radius: 100%;
+}
+/* end step 2 */
+.how-its-work .step-3{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.how-its-work .step-3 .img{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.how-its-work .step-3 img{
+    background-color: #FF5F06;
+    width: 70%;
+    border-radius: 100%;
+}
+/* end step 3 */
+.how-its-work .step-4{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.how-its-work .step-4 .img{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.how-its-work .step-4 img{
+    background-color: #FF5F06;
+    width: 50%;
+    border-radius: 100%;
+}
+/* end step 4 */

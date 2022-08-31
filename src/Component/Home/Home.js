@@ -1,10 +1,12 @@
 import React from 'react';
 import GoogleFontLoader from 'react-google-font-loader';
 import ChooseUs from '../ChooseUs/ChooseUs';
+import FeaturedFood from '../FeaturedFood/FeaturedFood';
+import HowItsWorks from '../HowItsWorks/HowItsWorks';
 import './Home.css'
 
 const Home = () => {
-    <GoogleFontLoader
+  <GoogleFontLoader
     fonts={[
       {
         font: 'Roboto',
@@ -17,20 +19,29 @@ const Home = () => {
     ]}
     subsets={['cyrillic-ext', 'greek']}
   />
-    return (
-        <div>
-          <div className='home-bg' style={{ fontFamily: 'Roboto Mono, monospaced' }}>
-            <div style={{width:'90%',margin:'auto',textAlign:'center'}}>
-            <h1 className='sm:text-1xl md:text-2xl lg:text-4xl mb-5 text-green-800 font-bold pt-20'>Best Food waiting for your belly</h1>
-            <div>
-            <input className='home-input'></input>
-            <button type="button" className='btn btn-primary home-btn' style={{borderRadius:'20px',marginLeft:'-20px'}}>Search</button>
+  return (
+    <div>
+      <div className='home-bg' style={{ fontFamily: 'Roboto Mono, monospaced' }}>
+        <div style={{ width: '90%', margin: 'auto', textAlign: 'center' }}>
+          <h1 className='sm:text-1xl md:text-2xl lg:text-4xl mb-5 text-white uppercase font-bold pt-20'>Best Food waiting for your belly</h1>
+          <p className='text-xl text-white'>We can deliver even if you live 6KM far!</p>
+          <div className='home-form pt-5'>
+          <div class="form-control">
+            <div class="input-group">
+              <input type="text" placeholder="Search…" class="input input-bordered text-xl" />
+              <button class="btn btn-square">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
+              </button>
             </div>
-            </div>
+          </div>
+          </div>
         </div>
-        <ChooseUs></ChooseUs>
-        </div>
-    );
+      </div>
+      <HowItsWorks></HowItsWorks>
+      <FeaturedFood></FeaturedFood>
+      <ChooseUs></ChooseUs>
+    </div>
+  );
 };
 
 export default Home;

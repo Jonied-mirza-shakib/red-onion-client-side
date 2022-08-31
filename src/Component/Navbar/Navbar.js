@@ -13,20 +13,20 @@ const Navbar = () => {
       };
       
     const menuItem=<>
-    <li style={{padding:'10px',fontSize:'18px',textTransform:'uppercase',color:'darkcyan',fontWeight:'bold'}}><Link to='/'>Home</Link></li>
-    <li style={{padding:'10px',fontSize:'18px',textTransform:'uppercase',color:'darkcyan',fontWeight:'bold'}}><Link to='/breakfast'>Breakfast</Link></li>
-    <li style={{padding:'10px',fontSize:'18px',textTransform:'uppercase',color:'darkcyan',fontWeight:'bold'}}><Link to='/dinner'>Dinner</Link></li>
-    <li style={{padding:'10px',fontSize:'18px',textTransform:'uppercase',color:'darkcyan',fontWeight:'bold'}}><Link to='/lunce'>Lunce</Link></li>
-    <li style={{padding:'10px',fontSize:'18px',textTransform:'uppercase',color:'darkcyan',fontWeight:'bold'}}><Link to='/myOrder'>My Order</Link></li>
+    <li style={{padding:'10px',fontSize:'16px',textTransform:'uppercase'}}><Link to='/'>Home</Link></li>
+    <li style={{padding:'10px',fontSize:'16px',textTransform:'uppercase'}}><Link to='/breakfast'>Breakfast</Link></li>
+    <li style={{padding:'10px',fontSize:'16px',textTransform:'uppercase'}}><Link to='/dinner'>Dinner</Link></li>
+    <li style={{padding:'10px',fontSize:'16px',textTransform:'uppercase'}}><Link to='/lunce'>Lunce</Link></li>
+    <li style={{padding:'10px',fontSize:'16px',textTransform:'uppercase'}}><Link to='/myOrder'>My Order</Link></li>
     {
-            user && <li style={{padding:'10px',fontSize:'18px',textTransform:'uppercase',color:'darkcyan',fontWeight:'bold'}}><Link to='/dashboard'>Dashboard</Link></li>
+            user && <li style={{padding:'10px',fontSize:'16px',textTransform:'uppercase'}}><Link to='/dashboard'>Dashboard</Link></li>
         }
-    <li style={{padding:'10px',fontSize:'18px',textTransform:'uppercase',color:'darkcyan',fontWeight:'bold'}}>{
+    <li style={{padding:'10px',fontSize:'16px',textTransform:'uppercase'}}>{
         user?<button onClick={logout} type="button" className='btn text-white'>Log Out</button>:<Link to='/login'>Login</Link>
     }</li>
     </>
     return (
-        <div class="navbar py-3" style={{backgroundColor:'#FCF4E0'}}>
+        <div class="navbar py-3 sticky top-0 bg-white">
             <div class="navbar-start">
                 <div class="dropdown">
                     <label tabindex="0" class="btn btn-ghost lg:hidden">
