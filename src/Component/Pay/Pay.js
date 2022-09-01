@@ -10,7 +10,7 @@ const Pay = () => {
     const [user, loading] = useAuthState(auth);
     const navigate=useNavigate()
     useEffect(() => {
-        fetch(`https://whispering-oasis-37712.herokuapp.com/order?email=${user?.email}`,{
+        fetch(`https://red-onion-server-side.vercel.app/order?email=${user?.email}`,{
             method:'GET',
             headers:{
                 'authorization':`Bearer ${localStorage.getItem('accessToken')}`
@@ -31,7 +31,7 @@ const Pay = () => {
 
     const handleDelete = id => {
         console.log(id)
-        fetch(`https://whispering-oasis-37712.herokuapp.com/order/${id}`, {
+        fetch(`https://red-onion-server-side.vercel.app/order/${id}`, {
             method: "DELETE",
             headers: {
                 'Content-type': 'application/json'

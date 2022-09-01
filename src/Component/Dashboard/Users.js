@@ -3,7 +3,7 @@ import { useQuery } from 'react-query';
 import Loading from '../Loading/Loading';
 
 const Users = () => {
-    const { data: user, isLoading, refetch } = useQuery(['users'], () => fetch('https://whispering-oasis-37712.herokuapp.com/user', {
+    const { data: user, isLoading, refetch } = useQuery(['users'], () => fetch('https://red-onion-server-side.vercel.app/user', {
         method: 'GET',
         headers: {
             authorization: `Bearer ${localStorage.getItem('accessToken')}`
@@ -16,7 +16,7 @@ const Users = () => {
         return <Loading></Loading>
     }
     const makeAnAdmin = email => {
-        fetch(`https://whispering-oasis-37712.herokuapp.com/user/admin/${email}`, {
+        fetch(`https://red-onion-server-side.vercel.app/user/admin/${email}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',

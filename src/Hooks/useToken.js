@@ -6,7 +6,7 @@ const useToken = user => {
     const email = user?.user?.email;
     const currentUser = { email: email };
     if (email) {
-      fetch(`https://whispering-oasis-37712.herokuapp.com/user/${email}`, {
+      fetch(`https://red-onion-server-side.vercel.app/user/${email}`, {
         method: 'PUT', // or 'PUT'
         headers: {
           'content-type': 'application/json'

@@ -12,7 +12,7 @@ const Breakfast = () => {
   const navigate=useNavigate();
   const [user, loading] = useAuthState(auth);
   useEffect(() => {
-    fetch('https://whispering-oasis-37712.herokuapp.com/breakfast')
+    fetch('https://red-onion-server-side.vercel.app/breakfast')
       .then(res => res.json())
       .then(data => setBreakfast(data))
   }, [])
@@ -53,7 +53,7 @@ const Breakfast = () => {
     let orderData = { name, email, number, address,grandTotal }
     console.log(orderData)
 
-    fetch('https://whispering-oasis-37712.herokuapp.com/order', {
+    fetch('https://red-onion-server-side.vercel.app/order', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -63,15 +63,15 @@ const Breakfast = () => {
       .then(response => response.json())
       .then(data => {
         console.log('Success:', data);
-        alert(`The order has been successfully added, you can confirm the payment by pressing the close button and pressing the pay button.
-        অর্ডারটি সফলভাবে যুক্ত করা হয়েছে, আপনি ক্লোজ বোতামটি টিপে এবং পে বোতামটি টিপে অর্থ প্রদান নিশ্চিত করতে পারেন |`)
+        alert(`The order has been successfully added, you can confirm the payment by pressing the close button and pressing the pay button.`)
       })
     event.target.reset();
   }
 
   return (
-    <div style={{ width: '90%', margin: 'auto', marginTop: '80px' }}>
-      <h1 className='text-5xl text-center uppercase' style={{ fontFamily: 'Roboto Mono, monospaced', fontWeight: 'bold', color: 'darkcyan' }}>BREAKFAST</h1>
+   <div className='bg-base-200'>
+     <div style={{ width: '90%', margin: 'auto', paddingTop: '80px',paddingBottom:'50px' }}>
+      <h1 className='text-5xl text-center uppercase' style={{ fontFamily: 'Roboto Mono, monospaced', fontWeight: 'bold', color: 'black' }}>BREAKFAST</h1>
       <div className="divider w-1/4 m-auto mb-10"></div>
       <div style={{ display: 'flex', flexDirection: 'row', gap: '2%' }}>
         <div style={{ width: '75%' }} className='grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4'>
@@ -145,6 +145,7 @@ const Breakfast = () => {
         </div>
       </div>
     </div>
+   </div>
   );
 };
 

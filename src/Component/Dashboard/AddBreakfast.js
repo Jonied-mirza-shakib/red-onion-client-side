@@ -26,7 +26,7 @@ const AddBreakfast = () => {
             description: data.description,
             img: image
         }
-        fetch('https://whispering-oasis-37712.herokuapp.com/breakfast', {
+        fetch('https://red-onion-server-side.vercel.app/breakfast', {
   method: 'POST',
   headers: {
     'Content-Type': 'application/json',

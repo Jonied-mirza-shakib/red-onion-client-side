@@ -25,7 +25,7 @@ const AddLunch = () => {
         price: data.price,
         image: image
     }
-    fetch('https://whispering-oasis-37712.herokuapp.com/lunch', {
+    fetch('https://red-onion-server-side.vercel.app/lunch', {
   method: 'POST', // or 'PUT'
   headers: {
     'Content-Type': 'application/json',

@@ -14,7 +14,7 @@ const UpdateDinner = () => {
         description: data.description,
         img: data.img
     }
-    fetch(`https://whispering-oasis-37712.herokuapp.com/dinner/${id}`, {
+    fetch(`https://red-onion-server-side.vercel.app/dinner/${id}`, {
   method: 'PUT',
   headers: {
     'Content-Type': 'application/json',
