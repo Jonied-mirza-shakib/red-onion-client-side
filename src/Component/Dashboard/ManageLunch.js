@@ -5,13 +5,13 @@ const ManageLunch = () => {
     const [lunch,setLunch]=useState([]);
     const navigate=useNavigate()
     useEffect(()=>{
-        fetch('https://red-onion-server-side.vercel.app/lunch')
+        fetch('https://whispering-oasis-37712.herokuapp.com/lunch')
         .then(res=>res.json())
         .then(data=>setLunch(data))
     },[])
 
     const handleDelete=id=>{
-      fetch(`https://red-onion-server-side.vercel.app/lunch/${id}`,{
+      fetch(`https://whispering-oasis-37712.herokuapp.com/lunch/${id}`,{
         method:'DELETE'
     })
     .then(res=>res.json())

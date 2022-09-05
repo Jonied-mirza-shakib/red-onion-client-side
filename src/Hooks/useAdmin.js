@@ -6,7 +6,7 @@ const useAdmin=user=>{
     useEffect(()=>{
         const email=user?.email;
         if(email){
-            fetch(`https://red-onion-server-side.vercel.app/admin/${email}`, {
+            fetch(`https://whispering-oasis-37712.herokuapp.com/admin/${email}`, {
                 method: 'GET', // or 'PUT'
                 headers: {
                   'content-type': 'application/json',

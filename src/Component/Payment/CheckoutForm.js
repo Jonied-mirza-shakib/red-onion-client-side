@@ -11,7 +11,7 @@ const CheckoutForm = ({pay}) => {
     const [transactionId, setTransactionId] = useState("");
     const { _id, grandTotal, name } = pay;
     useEffect(() => {
-        fetch('https://red-onion-server-side.vercel.app/create-payment-intent', {
+        fetch('https://whispering-oasis-37712.herokuapp.com/create-payment-intent', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -74,7 +74,7 @@ const CheckoutForm = ({pay}) => {
             }
 
             // updated data
-            fetch(`https://red-onion-server-side.vercel.app/order/${_id}`, {
+            fetch(`https://whispering-oasis-37712.herokuapp.com/order/${_id}`, {
                 method: 'PATCH', // or 'PUT'
                 headers: {
                     'Content-Type': 'application/json',
