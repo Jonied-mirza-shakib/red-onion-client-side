@@ -10,7 +10,7 @@ const Dinner = () => {
   const [cart, setCart] = useState([]);
   const [user, loading] = useAuthState(auth);
   useEffect(() => {
-    fetch('https://whispering-oasis-37712.herokuapp.com/dinner')
+    fetch('https://red-onion-server-side.onrender.com/dinner')
       .then(res => res.json())
       .then(data => setDinner(data))
   }, [])
@@ -51,7 +51,7 @@ const Dinner = () => {
     let orderData = { name, email, number, address,grandTotal }
     console.log(orderData)
 
-    fetch('https://whispering-oasis-37712.herokuapp.com/order', {
+    fetch('https://red-onion-server-side.onrender.com/order', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
