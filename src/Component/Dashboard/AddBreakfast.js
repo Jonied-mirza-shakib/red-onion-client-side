@@ -50,8 +50,8 @@ reset()
     return (
         <div>
             <h1 className='text-3xl text-center text-blue-700 uppercase font-bold mt-5'>Breakfast added</h1>
-            <div class="card w-2/4 bg-base-100 shadow-xl">
-  <div class="card-body">
+            <div className="card w-2/4 bg-base-100 shadow-xl">
+  <div className="card-body">
   <form onSubmit={handleSubmit(onSubmit)}>
    <div>
    <label for="name">Name</label>

@@ -23,11 +23,11 @@ const FeaturedFood = () => {
                 <div className='grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5'>
                     <div className='breakfast'>
                        <button type="button" onClick={handleBreakfast}>
-                       <div class="card w-max-w bg-base-100 shadow-2xl">
+                       <div className="card w-max-w bg-base-100 shadow-2xl">
                             <figure>
                                 <img src={breakfast} alt=""/>
                             </figure>
-                            <div class="card-body">
+                            <div className="card-body">
                                 <h3 className='text-center font-bold'>BREAKFAST</h3>
                             </div>
                         </div>
@@ -36,11 +36,11 @@ const FeaturedFood = () => {
                     {/* end breakfast section */}
                     <div className='dinner'>
                        <button type="button" onClick={handleDinner}>
-                       <div class="card w-max-w bg-base-100 shadow-2xl">
+                       <div className="card w-max-w bg-base-100 shadow-2xl">
                             <figure>
                                 <img src={dinner} alt=""/>
                             </figure>
-                            <div class="card-body">
+                            <div className="card-body">
                                 <h3 className='text-center font-bold'>DINNER</h3>
                             </div>
                         </div>
@@ -49,11 +49,11 @@ const FeaturedFood = () => {
                     {/* end dinner section */}
                     <div className='lunch'>
                        <button type="button" onClick={handleLunch}>
-                       <div class="card w-max-w bg-base-100 shadow-2xl">
+                       <div className="card w-max-w bg-base-100 shadow-2xl">
                             <figure>
                                 <img src={lunch} alt=""/>
                             </figure>
-                            <div class="card-body">
+                            <div className="card-body">
                                 <h3 className='text-center font-bold'>LUNCH</h3>
                             </div>
                         </div>

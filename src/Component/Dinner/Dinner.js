@@ -84,8 +84,8 @@ const Dinner = () => {
         </div>
         <div style={{ width: '23%' }}>
 
-          <div class="card w-full bg-base-100 shadow-xl">
-            <div class="card-body">
+          <div className="card w-full bg-base-100 shadow-xl">
+            <div className="card-body">
               <h1 className='font-bold'>ORDER SUMMARY</h1>
               <h4 className='font-bold'>Order quantity: {quantity}</h4>
               <h4 className='font-bold'>Total: ${total}</h4>
@@ -93,51 +93,51 @@ const Dinner = () => {
               <h4 className='font-bold'>GrandTotal: ${grandTotal}</h4>
 
               {/* use modal */}
-              <input type="checkbox" id="my-modal" class="modal-toggle" />
-              <div class="modal">
-                <div class="modal-box">
+              <input type="checkbox" id="my-modal" className="modal-toggle" />
+              <div className="modal">
+                <div className="modal-box">
                 <form onSubmit={handleSubmit}>
-                    <div class="form-control w-full max-w-xs">
-                      <label class="label">
-                        <span class="label-text">Name</span>
+                    <div className="form-control w-full max-w-xs">
+                      <label className="label">
+                        <span className="label-text">Name</span>
                       </label>
-                      <input type="text" name="name" value={user?.displayName} className="input input-bordered w-full max-w-xs mb-5" disabled />
+                      <input type="text" name="name" value={user?.displayName} className="input input-bordered w-full max-w-xs mb-5" readOnly />
                     </div>
-                    <div class="form-control w-full max-w-xs">
-                      <label class="label">
-                        <span class="label-text">Email</span>
+                    <div className="form-control w-full max-w-xs">
+                      <label className="label">
+                        <span className="label-text">Email</span>
                       </label>
-                      <input type="email" name="email" value={user?.email} className="input input-bordered w-full max-w-xs mb-5" disabled />
+                      <input type="email" name="email" value={user?.email} className="input input-bordered w-full max-w-xs mb-5" readOnly />
                     </div>
-                    <div class="form-control w-full max-w-xs">
-                      <label class="label">
-                        <span class="label-text">Phone Number</span>
+                    <div className="form-control w-full max-w-xs">
+                      <label className="label">
+                        <span className="label-text">Phone Number</span>
                       </label>
                       <input type="text" name="PhoneNumber" placeholder='Enter your Phone Number' required className="input input-bordered w-full max-w-xs mb-5" />
                     </div>
-                    <div class="form-control w-full max-w-xs">
-                      <label class="label">
-                        <span class="label-text">Address</span>
+                    <div className="form-control w-full max-w-xs">
+                      <label className="label">
+                        <span className="label-text">Address</span>
                       </label>
                       <input type="text" name="address" placeholder='Enter your current address' required className="input input-bordered w-full max-w-xs mb-5" />
                     </div>
-                    <div class="form-control w-full max-w-xs">
-                      <label class="label">
-                        <span class="label-text">GrandTotal</span>
+                    <div className="form-control w-full max-w-xs">
+                      <label className="label">
+                        <span className="label-text">GrandTotal</span>
                       </label>
-                      <input type="text" name="order" placeholder='Enter your Grand Total' required value={grandTotal} className="input input-bordered w-full max-w-xs mb-5" />
+                      <input type="text" name="order" placeholder='Enter your Grand Total' readOnly value={grandTotal} className="input input-bordered w-full max-w-xs mb-5" />
                     </div>
                     <input
                       type="submit" value="Order Now" className='btn btn-accent w-3/4 text-white' />
                   </form>
-                  <div class="modal-action">
-                    <label for="my-modal" class="btn">CLOSE</label>
+                  <div className="modal-action">
+                    <label for="my-modal" className="btn">CLOSE</label>
                   </div>
                 </div>
               </div>
 
 
-              <label for="my-modal" class="btn modal-button">ORDER NOW</label>
+              <label for="my-modal" className="btn modal-button">ORDER NOW</label>
               <Link to='/myOrder' className='btn btn-error text-white w-full'>PAY</Link>
             </div>
           </div>

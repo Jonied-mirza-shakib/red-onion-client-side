@@ -26,15 +26,15 @@ const Payment = () => {
 
   return (
     <div style={{ width: '90%', margin: 'auto', marginTop: '80px' }}>
-      <div class="card w-50 max-w-md bg-base-100 shadow-xl" style={{ marginBottom: '30px' }}>
-        <div class="card-body">
-          <h2 class="card-title text-green-700"> HELLO, <span className='text-orange-700'>{pay?.name}</span></h2>
-          <h2 class="card-title">Please Pay For <span className='text-orange-700'>${pay?.grandTotal}</span></h2>
+      <div className="card w-50 max-w-md bg-base-100 shadow-xl" style={{ marginBottom: '30px' }}>
+        <div className="card-body">
+          <h2 className="card-title text-green-700"> HELLO, <span className='text-orange-700'>{pay?.name}</span></h2>
+          <h2 className="card-title">Please Pay For <span className='text-orange-700'>${pay?.grandTotal}</span></h2>
 
         </div>
       </div>
-      <div class="card flex-shrink-0 w-50 max-w-md shadow-2xl bg-base-100">
-        <div class="card-body">
+      <div className="card flex-shrink-0 w-50 max-w-md shadow-2xl bg-base-100">
+        <div className="card-body">
           <Elements stripe={stripePromise}>
             <CheckoutForm pay={pay} />
           </Elements>

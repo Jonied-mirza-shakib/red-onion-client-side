@@ -15,8 +15,8 @@ const HowItsWorks = () => {
             </div>
             <div className='grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5'>
                 <div className='step-1'>
-                    <div class="card w-max-w bg-base-100 shadow-xl">
-                        <div class="card-body">
+                    <div className="card w-max-w bg-base-100 shadow-xl">
+                        <div className="card-body">
                            <div className='img'>
                            <img src={step1} alt=""/>
                            </div>
@@ -27,8 +27,8 @@ const HowItsWorks = () => {
                 </div>
                 {/* end step 1 */}
                 <div className='step-2'>
-                    <div class="card w-max-w bg-base-100 shadow-xl">
-                        <div class="card-body">
+                    <div className="card w-max-w bg-base-100 shadow-xl">
+                        <div className="card-body">
                            <div className='img'>
                            <img src={step2} alt=""/>
                            </div>
@@ -39,8 +39,8 @@ const HowItsWorks = () => {
                 </div>
                 {/* end step 2 */}
                 <div className='step-3'>
-                    <div class="card w-max-w bg-base-100 shadow-xl">
-                        <div class="card-body">
+                    <div className="card w-max-w bg-base-100 shadow-xl">
+                        <div className="card-body">
                            <div className='img'>
                            <img src={step3} alt=""/>
                            </div>
@@ -51,8 +51,8 @@ const HowItsWorks = () => {
                 </div>
                 {/* end step 3 */}
                 <div className='step-4'>
-                    <div class="card w-max-w bg-base-100 shadow-xl">
-                        <div class="card-body">
+                    <div className="card w-max-w bg-base-100 shadow-xl">
+                        <div className="card-body">
                            <div className='img'>
                            <img src={step4} alt=""/>
                            </div>
