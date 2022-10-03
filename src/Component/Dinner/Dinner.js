@@ -7,6 +7,7 @@ import SingleDinner from '../SingleDinner/SingleDinner';
 
 const Dinner = () => {
   const [dinner, setDinner] = useState([]);
+  const[reloads,setReloads]=useState("");
   const [cart, setCart] = useState([]);
   const [user, loading] = useAuthState(auth);
   useEffect(() => {
@@ -66,6 +67,10 @@ const Dinner = () => {
     event.target.reset();
   }
 
+  // auto refresh
+  setTimeout(function () {
+    setReloads("")
+}, 1000);
 
   return (
    <div className='bg-base-200'>

@@ -7,6 +7,7 @@ import SingleLunch from '../SingleLunch/SingleLunch';
 
 const Lunce = () => {
   const [lunch, setLunch] = useState([]);
+  const[reloads,setReloads]=useState("");
   const [cart, setCart] = useState([]);
   const [user, loading] = useAuthState(auth);
   useEffect(() => {
@@ -66,7 +67,11 @@ const Lunce = () => {
     event.target.reset();
   }
 
+  // auto refresh
 
+  setTimeout(function () {
+    setReloads("")
+}, 1000);
 
 
 

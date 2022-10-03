@@ -8,6 +8,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 
 const Breakfast = () => {
   const [breakfast, setBreakfast] = useState([]);
+  const[reloads,setReloads]=useState("");
   const [cart, setCart] = useState([])
   const navigate=useNavigate();
   const [user, loading] = useAuthState(auth);
@@ -67,6 +68,12 @@ const Breakfast = () => {
       })
     event.target.reset();
   }
+
+// auto refresh
+setTimeout(function () {
+  setReloads("")
+}, 1000);
+
 
   return (
    <div className='bg-base-200'>
