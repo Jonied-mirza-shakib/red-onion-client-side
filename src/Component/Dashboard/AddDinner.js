@@ -25,7 +25,7 @@ const AddDinner = () => {
                 price: data.price,
                 img: img
             }
-            fetch('https://red-onion-server-side.onrender.com/dinner', {
+            fetch('https://whispering-oasis-37712.herokuapp.com/dinner', {
   method: 'POST',
   headers: {
     'Content-Type': 'application/json',

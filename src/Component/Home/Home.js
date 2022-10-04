@@ -5,7 +5,6 @@ import HowItsWorks from '../HowItsWorks/HowItsWorks';
 import './Home.css'
 
 const Home = () => {
-  const[reloads,setReloads]=useState("");
   <GoogleFontLoader
     fonts={[
       {
@@ -19,9 +18,7 @@ const Home = () => {
     ]}
     subsets={['cyrillic-ext', 'greek']}
   />
-  setTimeout(function () {
-    setReloads("")
-}, 1000);
+
   return (
     <div>
       <div className='home-bg' style={{ fontFamily: 'Roboto Mono, monospaced' }}>
@@ -42,7 +39,6 @@ const Home = () => {
       </div>
       <HowItsWorks></HowItsWorks>
       <FeaturedFood></FeaturedFood>
-      {reloads}
     </div>
   );
 };

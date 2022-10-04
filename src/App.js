@@ -26,8 +26,6 @@ import UpdateDinner from './Component/UpdateDinner/UpdateDinner';
 import UpdatedLunch from './Component/UpdatedLunch/UpdatedLunch';
 import Users from './Component/Dashboard/Users';
 import RequireAdmin from './Component/RequireAuth/RequireAdmin';
-import { hot } from 'react-hot-loader/root';
-
 
 function App() {
   return (
@@ -70,4 +68,4 @@ function App() {
   );
 }
 
-export default hot(App);
+export default App;
