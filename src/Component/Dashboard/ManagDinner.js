@@ -5,12 +5,12 @@ const ManagDinner = () => {
     const [dinner, setDinner] = useState([]);
     const navigate=useNavigate()
     useEffect(() => {
-      fetch('https://whispering-oasis-37712.herokuapp.com/dinner')
+      fetch('https://red-onion-server-side.onrender.com/dinner')
         .then(res => res.json())
         .then(data => setDinner(data))
     }, [])
     const handleDelete=id=>{
-      fetch(`https://whispering-oasis-37712.herokuapp.com/dinner/${id}`,{
+      fetch(`https://red-onion-server-side.onrender.com/dinner/${id}`,{
         method:'DELETE'
     })
     .then(res=>res.json())
