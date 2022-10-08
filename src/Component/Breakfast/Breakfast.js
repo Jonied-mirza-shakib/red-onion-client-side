@@ -5,17 +5,27 @@ import { Link, useNavigate } from 'react-router-dom';
 import './Breakfast.css'
 import auth from '../../firebase.init';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import Loading from '../Loading/Loading'
 
 const Breakfast = () => {
   const [breakfast, setBreakfast] = useState([]);
   const [cart, setCart] = useState([])
+  const [loadings, setLoadings] = useState(true)
   const navigate=useNavigate();
   const [user, loading] = useAuthState(auth);
   useEffect(() => {
     fetch('https://red-onion-server-side.onrender.com/breakfast')
       .then(res => res.json())
-      .then(data => setBreakfast(data))
+      .then(data => {
+        setBreakfast(data)
+        setLoadings(false)
+      })
   }, [])
+
+
+  if(loadings){
+    return <Loading></Loading>
+  }
 
   const handleIncreaseBtn = (selectedProduct) => {
     let newCart = [];

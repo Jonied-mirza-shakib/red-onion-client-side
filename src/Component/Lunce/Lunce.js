@@ -3,17 +3,26 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link } from 'react-router-dom';
 import auth from '../../firebase.init';
 import { addToDb, getStoredCart } from '../../utilities/fakedb';
+import Loading from '../Loading/Loading';
 import SingleLunch from '../SingleLunch/SingleLunch';
 
 const Lunce = () => {
   const [lunch, setLunch] = useState([]);
   const [cart, setCart] = useState([]);
   const [user, loading] = useAuthState(auth);
+  const [loadings, setLoadings] = useState(true)
   useEffect(() => {
     fetch('https://red-onion-server-side.onrender.com/lunch')
       .then(res => res.json())
-      .then(data => setLunch(data))
+      .then(data => {
+        setLunch(data)
+        setLoadings(false)
+      })
   }, [])
+
+  if(loadings){
+    return <Loading></Loading>
+  }
 
   const handleIncreaseBtn = (selectedProduct) => {
     let newCart = [];
