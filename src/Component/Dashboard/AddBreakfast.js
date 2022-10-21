@@ -26,7 +26,7 @@ const AddBreakfast = () => {
             description: data.description,
             img: image
         }
-        fetch('https://red-onion-server-side.onrender.com/breakfast', {
+        fetch('https://red-onion-server-side-production.up.railway.app/breakfast', {
   method: 'POST',
   headers: {
     'Content-Type': 'application/json',

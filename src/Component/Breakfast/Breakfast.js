@@ -14,7 +14,7 @@ const Breakfast = () => {
   const navigate=useNavigate();
   const [user, loading] = useAuthState(auth);
   useEffect(() => {
-    fetch('https://red-onion-server-side.onrender.com/breakfast')
+    fetch('https://red-onion-server-side-production.up.railway.app/breakfast')
       .then(res => res.json())
       .then(data => {
         setBreakfast(data)
@@ -63,7 +63,7 @@ const Breakfast = () => {
     let orderData = { name, email, number, address,grandTotal }
     console.log(orderData)
 
-    fetch('https://red-onion-server-side.onrender.com/order', {
+    fetch('https://red-onion-server-side-production.up.railway.app/order', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

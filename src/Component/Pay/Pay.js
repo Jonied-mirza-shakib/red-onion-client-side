@@ -10,7 +10,7 @@ const Pay = () => {
     const [user, loading] = useAuthState(auth);
     const navigate=useNavigate()
     useEffect(() => {
-        fetch(`https://red-onion-server-side.onrender.com/order?email=${user?.email}`,{
+        fetch(`https://red-onion-server-side-production.up.railway.app/order?email=${user?.email}`,{
             method:'GET',
             headers:{
                 'authorization':`Bearer ${localStorage.getItem('accessToken')}`
@@ -31,7 +31,7 @@ const Pay = () => {
 
     const handleDelete = id => {
         console.log(id)
-        fetch(`https://red-onion-server-side.onrender.com/order/${id}`, {
+        fetch(`https://red-onion-server-side-production.up.railway.app/order/${id}`, {
             method: "DELETE",
             headers: {
                 'Content-type': 'application/json'

@@ -10,7 +10,7 @@ const Payment = () => {
   const { id } = useParams();
   const navigate = useNavigate()
   const { data: pay, isLoading } = useQuery(['orders', id], () =>
-    fetch(`https://red-onion-server-side.onrender.com/order/${id}`, {
+    fetch(`https://red-onion-server-side-production.up.railway.app/order/${id}`, {
       method: 'GET',
     })
       .then(res => res.json())

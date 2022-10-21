@@ -5,7 +5,7 @@ const useBreakfast = () =>{
     const [breakfast, setBreakfast] = useState([]);
 
     useEffect( () =>{
-        fetch('https://red-onion-server-side.onrender.com/breakfast')
+        fetch('https://red-onion-server-side-production.up.railway.app/breakfast')
         .then(res => res.json())
         .then(data => setBreakfast(data));
     }, []);

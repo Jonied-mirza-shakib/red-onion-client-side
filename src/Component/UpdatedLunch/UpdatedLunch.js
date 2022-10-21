@@ -14,7 +14,7 @@ const UpdatedLunch = () => {
            description: data.description,
            img: data.img
        }
-       fetch(`https://red-onion-server-side.onrender.com/lunch/${id}`, {
+       fetch(`https://red-onion-server-side-production.up.railway.app/lunch/${id}`, {
      method: 'PUT',
      headers: {
        'Content-Type': 'application/json',

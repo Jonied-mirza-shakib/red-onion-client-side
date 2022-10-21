@@ -6,7 +6,7 @@ const useToken = user => {
     const email = user?.user?.email;
     const currentUser = { email: email };
     if (email) {
-      fetch(`https://red-onion-server-side.onrender.com/user/${email}`, {
+      fetch(`https://red-onion-server-side-production.up.railway.app/user/${email}`, {
         method: 'PUT', // or 'PUT'
         headers: {
           'content-type': 'application/json'
