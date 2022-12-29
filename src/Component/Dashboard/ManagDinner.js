@@ -5,12 +5,12 @@ const ManagDinner = () => {
     const [dinner, setDinner] = useState([]);
     const navigate=useNavigate()
     useEffect(() => {
-      fetch('https://red-onion-server-side-production.up.railway.app/dinner')
+      fetch('https://red-onion-server-side.onrender.com/dinner')
         .then(res => res.json())
         .then(data => setDinner(data))
     }, [])
     const handleDelete=id=>{
-      fetch(`https://red-onion-server-side-production.up.railway.app/dinner/${id}`,{
+      fetch(`https://red-onion-server-side.onrender.com/dinner/${id}`,{
         method:'DELETE'
     })
     .then(res=>res.json())

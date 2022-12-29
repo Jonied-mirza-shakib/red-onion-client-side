@@ -25,7 +25,7 @@ const AddLunch = () => {
         price: data.price,
         image: image
     }
-    fetch('https://red-onion-server-side-production.up.railway.app/lunch', {
+    fetch('https://red-onion-server-side.onrender.com/lunch', {
   method: 'POST', // or 'PUT'
   headers: {
     'Content-Type': 'application/json',

@@ -5,13 +5,13 @@ const ManageLunch = () => {
     const [lunch,setLunch]=useState([]);
     const navigate=useNavigate()
     useEffect(()=>{
-        fetch('https://red-onion-server-side-production.up.railway.app/lunch')
+        fetch('https://red-onion-server-side.onrender.com/lunch')
         .then(res=>res.json())
         .then(data=>setLunch(data))
     },[])
 
     const handleDelete=id=>{
-      fetch(`https://red-onion-server-side-production.up.railway.app/lunch/${id}`,{
+      fetch(`https://red-onion-server-side.onrender.com/lunch/${id}`,{
         method:'DELETE'
     })
     .then(res=>res.json())

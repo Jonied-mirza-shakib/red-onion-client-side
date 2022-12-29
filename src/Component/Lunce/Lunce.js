@@ -12,7 +12,7 @@ const Lunce = () => {
   const [user, loading] = useAuthState(auth);
   const [loadings, setLoadings] = useState(true)
   useEffect(() => {
-    fetch('https://red-onion-server-side-production.up.railway.app/lunch')
+    fetch('https://red-onion-server-side.onrender.com/lunch')
       .then(res => res.json())
       .then(data => {
         setLunch(data)
@@ -60,7 +60,7 @@ const Lunce = () => {
     let orderData = { name, email, number, address, grandTotal }
     console.log(orderData)
 
-    fetch('https://red-onion-server-side-production.up.railway.app/order', {
+    fetch('https://red-onion-server-side.onrender.com/order', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

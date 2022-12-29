@@ -5,13 +5,13 @@ const ManagBreakfast = () => {
   const [breakfast, setBreakfast] = useState([]);
   const navigate = useNavigate()
   useEffect(() => {
-    fetch('https://red-onion-server-side-production.up.railway.app/breakfast')
+    fetch('https://red-onion-server-side.onrender.com/breakfast')
       .then(res => res.json())
       .then(data => setBreakfast(data))
   }, [])
 
   const handleDelete = id => {
-    fetch(`https://red-onion-server-side-production.up.railway.app/breakfast/${id}`, {
+    fetch(`https://red-onion-server-side.onrender.com/breakfast/${id}`, {
       method: 'DELETE'
     })
       .then(res => res.json())
